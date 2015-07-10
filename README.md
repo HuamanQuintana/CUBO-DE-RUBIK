@@ -1,2 +1,0 @@
-# CUBO-DE-RUBIK
-kmlkm
