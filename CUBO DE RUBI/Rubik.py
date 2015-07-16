@@ -5,7 +5,7 @@ from projection import GRAFICO_CUBO, project_points
 
 class Cube:
     """Magic Cube Representation"""
-    # define some attribues
+    # definicion de colores y atributos
     color_defecto = 'black'
     color_de_cara = ["w", "#ffcf00","#00008f", "#009f0f","#ff6f00", "#cf0000","gray", "none"]
 
@@ -33,14 +33,14 @@ class Cube:
     cara_base_central = Rubik_NUMPY.array([[0, 0, 1]])
     base_central_ad = Rubik_NUMPY.array([[0, 0, 1 + espesor_etiqueta]])
 
-    # Define rotation angles and axes for the six sides of the cube
+    # definicion de angulos de rotacion para los 6 lados del cubo
     x, y, z = Rubik_NUMPY.eye(3)
     rots = [GRAFICO_CUBO.from_v_theta(x, theta)
             for theta in (Rubik_NUMPY.pi / 2, -Rubik_NUMPY.pi / 2)]
     rots += [GRAFICO_CUBO.from_v_theta(y, theta)
              for theta in (Rubik_NUMPY.pi / 2, -Rubik_NUMPY.pi / 2, Rubik_NUMPY.pi, 2 * Rubik_NUMPY.pi)]
 
-    # define face movements
+    # definicion de movimiento de caras del cubo
  
 
     def __init__(self, N=3, plastic_color=None, face_colors=None):
@@ -90,7 +90,7 @@ class Cube:
 
             colors_i = i + Rubik_NUMPY.zeros(face_centroids_t.shape[0], dtype=int)
 
-            # append face ID to the face centroids for lex-sorting
+            # identificar las caras del centro
             face_centroids_t = Rubik_NUMPY.hstack([face_centroids_t.reshape(-1, 3),
                                           colors_i[:, None]])
             sticker_centroids_t = sticker_centroids_t.reshape((-1, 3))

@@ -104,19 +104,19 @@ def project_points(points, q, view, vertical=[0, 1, 0]):
 
     xdir /= Rubik_NUMPY.sqrt(Rubik_NUMPY.dot(xdir, xdir))
 
-    # get the unit vector corresponing to vertical
+    # obtener vecto vertical
     ydir = Rubik_NUMPY.cross(view, xdir)
     ydir /= Rubik_NUMPY.sqrt(Rubik_NUMPY.dot(ydir, ydir))
 
-    # normalize the viewer location: this is the z-axis
+    # normalizar la ubicacion en eje z
     v2 = Rubik_NUMPY.dot(view, view)
     zdir = view / Rubik_NUMPY.sqrt(v2)
 
-    # rotate the points
+    # rotar los puntos
     R = q.as_rotation_matrix()
     Rpts = Rubik_NUMPY.dot(points, R.T)
 
-    # project the points onto the view
+    # proyectar  los puntos en vista
     dpoint = Rpts - view
     dpoint_view = Rubik_NUMPY.dot(dpoint, view).reshape(dpoint.shape[:-1] + (1,))
     dproj = -dpoint * v2 / dpoint_view
