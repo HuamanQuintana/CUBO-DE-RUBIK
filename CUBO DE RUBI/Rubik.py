@@ -109,4 +109,12 @@ class Cube:
 
         self._sort_faces()
 
+    def _sort_faces(self):
+       
+        ind = Rubik_NUMPY.lexsort(self._face_centroids.T)
+        self._face_centroids = self._face_centroids[ind]
+        self._sticker_centroids = self._sticker_centroids[ind]
+        self._stickers = self._stickers[ind]
+        self._colors = self._colors[ind]
+        self._faces = self._faces[ind]
     
