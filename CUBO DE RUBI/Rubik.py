@@ -9,7 +9,8 @@ class Cube:
     color_defecto = 'black'
     color_de_cara = ["w", "#ffcf00","#00008f", "#009f0f","#ff6f00", "#cf0000","gray", "none"]
 
-    base_face = Rubik_NUMPY.array([[1, 1, 1],
+    base_face = Rubik_NUMPY.array([
+                          [1, 1, 1],
                           [1, -1, 1],
                           [-1, -1, 1],
                           [-1, 1, 1],
@@ -90,24 +91,7 @@ class Cube:
 
             colors_i = i + Rubik_NUMPY.zeros(face_centroids_t.shape[0], dtype=int)
 
-            # identificar las caras del centro
-            face_centroids_t = Rubik_NUMPY.hstack([face_centroids_t.reshape(-1, 3),
-                                          colors_i[:, None]])
-            sticker_centroids_t = sticker_centroids_t.reshape((-1, 3))
-
-            faces.append(faces_t)
-            face_centroids.append(face_centroids_t)
-            stickers.append(stickers_t)
-            sticker_centroids.append(sticker_centroids_t)
-            colors.append(colors_i)
-
-        self._face_centroids = Rubik_NUMPY.vstack(face_centroids)
-        self._faces = Rubik_NUMPY.vstack(faces)
-        self._sticker_centroids = Rubik_NUMPY.vstack(sticker_centroids)
-        self._stickers = Rubik_NUMPY.vstack(stickers)
-        self._colors = Rubik_NUMPY.concatenate(colors)
-
-        self._sort_faces()
+          
 
     def _sort_faces(self):
        
