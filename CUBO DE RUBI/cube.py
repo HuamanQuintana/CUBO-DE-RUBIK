@@ -88,3 +88,22 @@ class Cube(object):
                 self.stickers[i2] = Rubik_NUMPY.rot90(self.stickers[i2], 1)
         print "moved", f, l, len(ds)
         return None
+    def _rotate(self, args):
+      
+        a0 = args[0]
+        foo = self.stickers[a0]
+        a = a0
+        for b in args[1:]:
+            self.stickers[a] = self.stickers[b]
+            a = b
+        self.stickers[a] = foo
+        return None
+
+    def randomize(self, number):
+      
+        for t in range(number):
+            f = self.dictface[Rubik_NUMPY.random.randint(6)]
+            l = Rubik_NUMPY.random.randint(self.N)
+            d = 1 + Rubik_NUMPY.random.randint(3)
+            self.move(f, l, d)
+        return None

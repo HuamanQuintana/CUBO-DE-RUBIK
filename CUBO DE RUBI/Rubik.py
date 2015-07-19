@@ -101,4 +101,38 @@ class Cube:
         self._stickers = self._stickers[ind]
         self._colors = self._colors[ind]
         self._faces = self._faces[ind]
+
+        def rotate_face(self, f, n=1, layer=0):
+        """Rotate Face"""
+        if layer < 0 or layer >= self.N:
+            raise ValueError('layer should be between 0 and N-1')
+
+        try:
+            f_last, n_last, layer_last = self._move_list[-1]
+        except:
+            f_last, n_last, layer_last = None, None, None
+
+        if (f == f_last) and (layer == layer_last):
+            ntot = (n_last + n) % 4
+            if abs(ntot - 4) < abs(ntot):
+                ntot = ntot - 4
+            if Rubik_NUMPY.allclose(ntot, 0):
+                self._move_list = self._move_list[:-1]
+            else:
+                self._move_list[-1] = (f, ntot, layer)
+        else:
+            self._move_list.append((f, n, layer))
+        
+
+
+        proj = Rubik_NUMPY.dot(self._face_centroids[:, :3], v)
+        cubie_width = 2. / self.N
+        flag = ((proj > 0.9 - (layer + 1) * cubie_width) &
+                (proj < 1.1 - layer * cubie_width))
+
+        for x in [self._stickers, self._sticker_centroids,
+                  self._faces]:
+            x[flag] = Rubik_NUMPY.dot(x[flag], M.T)
+        self._face_centroids[flag, :3] = Rubik_NUMPY.dot(self._face_centroids[flag, :3],
+                                                M.T)
     
