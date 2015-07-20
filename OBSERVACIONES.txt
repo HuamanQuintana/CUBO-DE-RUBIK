@@ -8,3 +8,9 @@ OBSERVACIONES SEGUNDO AVANCE
 -------------------------------------------------
 - No han hecho merge del pull-request con las observaciones anteriores
 - deben hacer commits mas seguidos
+
+OBSERVACIONES TERCER AVANCE
+-----------------------------------------------------------
+- Tienen muchos commits, lo cual esta bien, pero por el momentos sus commits son de cosas irrelevantes, como poner figuras, lo que sigue estando bien
+- Los dos unicos commits donde han modificado código significativamente se han dedicado mas a traducir nombres de variables del inglés al español o cambiar nombres de métodos
+- Me temo que solo están planchando un proyecto, espero demuestren lo contrario
