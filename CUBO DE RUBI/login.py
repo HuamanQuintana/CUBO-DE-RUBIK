@@ -1,7 +1,7 @@
 from Tkinter import *
+from Rubik import Cube
 root = Tk()
 root.title('INGRESE SUS DATOS')
-# row 1 : the name
 nombre_label = Label(root,text="Nombre :")
 nombre_label.grid(row=1,column=1)
 nombre_str = StringVar()
@@ -14,6 +14,7 @@ last_str = StringVar()
 last_entry = Entry(root,textvariable=last_str)
 last_entry.grid(row=2,column=2)
 #archi=open('datos.txt','w')
-finish = Button(root,text="JUGAR",relief=open('Rubik.py'))
+finish = Button(root,text="JUGAR")
 finish.grid(row=4,column=2)
+
 root.mainloop()
